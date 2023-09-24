@@ -13,6 +13,7 @@
   --headerFC: linear-gradient(90deg, rgba(5, 80, 113, 1) 0%, rgb(241, 218, 9) 100%);
   --backgroundC: linear-gradient(90deg, rgb(35, 39, 70) 20%, rgb(31, 30, 23) 100%);
   --mainFC: #dbd2d2;
+  --hoverColor: rgb(61, 59, 59);
 }
 
 * {
@@ -20,6 +21,7 @@
   padding: 0;
   box-sizing: border-box;
   color: var(--mainFC);
+  font-size: var(--minFS);
 }
 
 @media (max-width:550px) {
