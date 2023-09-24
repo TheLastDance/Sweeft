@@ -11,10 +11,23 @@ body {
 
 main {
   max-width: 1200px;
+  width: 1200px;
   min-height: 600px;
   border-width: 1px 0px;
   border-style: solid;
   border-color: var(--mainFC);
-  margin: calc(15px * var(--scaleFactor)) 0;
+  margin: calc(15px * var(--scaleFactor)) auto;
   padding: 10px;
+  display: flex;
+}
+
+h1 {
+  font-size: var(--h1);
+}
+
+@media (max-width:1200px) {
+  main {
+    width: unset;
+    min-width: 800px;
+  }
 }

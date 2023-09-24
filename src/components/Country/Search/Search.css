@@ -1,10 +1,16 @@
+.search_container {
+  width: 100%;
+  position: relative;
+}
+
 .search {
-  height: 70px;
+  height: 60px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   border-radius: 5px;
   border: 1px solid var(--mainFC);
-  padding: 10px;
+  padding: 10px 20px;
   font-weight: 600;
   cursor: pointer;
   user-select: none;
@@ -19,13 +25,19 @@
   border: 1px solid rgb(180, 70, 70);
 }
 
+.search img {
+  fill: var(--mainFC);
+}
+
 .drop-menu {
+  position: absolute;
+  width: 100%;
   list-style: none;
   max-height: 300px;
   overflow-y: scroll;
   cursor: pointer;
   border-radius: 5px;
-  background-color: var(--backgroundC);
+  background: var(--backgroundC);
   margin-top: 5px;
   border: 1px solid var(--mainFC);
 }
@@ -41,7 +53,6 @@
 
 .drop-menu li:hover {
   border-bottom: 1px solid var(--mainFC);
-  transition: ease-in 0.1s;
 }
 
 .drop-menu li p {
