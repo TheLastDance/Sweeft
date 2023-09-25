@@ -1,14 +1,16 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import './Search.css';
-import { ICountryProps, ICountryName } from '../../../types/types';
-import { useRequest } from '../../../customHooks/useRequest';
+import { ICountryProps } from '../../../types/types';
 import OutsideClickHandler from 'react-outside-click-handler';
 import arrow_up from '../../../assets/arrow-up.svg';
 import arrow_down from '../../../assets/arrow-down.svg';
+import { Link } from "react-router-dom";
+import { LoadingOverlay } from '../../LoadingOverlay/LoadingOverlay';
+import { CountryContext } from '../../../context/CountryListProvider';
 
 const Search: React.FC<ICountryProps> = (props) => {
-  const { country, handleCountry } = props;
-  const { response } = useRequest<ICountryName[]>([], 'https://restcountries.com/v3.1/all?fields=name,flags');
+  const { country } = props;
+  const { data, isLoading } = useContext(CountryContext);
   const [dropMenu, setDropMenu] = useState(false);
 
   return (
@@ -19,14 +21,17 @@ const Search: React.FC<ICountryProps> = (props) => {
           {dropMenu ? <img src={arrow_up} alt="arrow-up icon" /> : <img src={arrow_down} alt="arrow-down icon" />}
         </div>
         {dropMenu ? <ul className='drop-menu'>
-          {response
+          {data
             .sort(((a, b) => a.name.common === b.name.common ? 0 : a.name.common < b.name.common ? -1 : 1))
-            .map((item, index) => <li key={index} onClick={() => { handleCountry(item.name.common); setDropMenu(false) }}>
-              <p>{item.name.common}</p>
-              <img src={item.flags.svg} alt={item.flags.alt} />
+            .map((item, index) => <li key={index} onClick={() => { setDropMenu(false) }}>
+              <Link to={`/${item.name.common}`}>
+                <p>{item.name.common}</p>
+                <img src={item.flags.svg} alt={item.flags.alt} />
+              </Link>
             </li>)}
         </ul> : null}
       </div>
+      <LoadingOverlay isVisible={isLoading} />
     </OutsideClickHandler>
   )
 }

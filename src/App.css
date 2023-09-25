@@ -31,3 +31,9 @@ h1 {
     min-width: 800px;
   }
 }
+
+@media (max-width:800px) {
+  main {
+    min-width: unset;
+  }
+}

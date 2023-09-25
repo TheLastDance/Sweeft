@@ -7,10 +7,10 @@ interface UseRequest<R> {
   setResponse: React.Dispatch<React.SetStateAction<R | []>>;
 }
 
-export function useRequest<R>(dependencyArray: string[] | [], url: string, argCash?: string): UseRequest<R> {
+export function useRequest<R>(dependencyArray: (string | undefined)[] | [], url: string, argCash?: string): UseRequest<R> {
   const [response, setResponse] = useState<UseRequest<R>["response"]>([]);
   const [error, setError] = useState<UseRequest<R>["error"]>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [cashStore, setCashStore] = useState<Record<string, R>>({});
 
   const makeRequest = async () => {
@@ -18,6 +18,7 @@ export function useRequest<R>(dependencyArray: string[] | [], url: string, argCa
       setResponse(cashStore[argCash]);
     } else {
       try {
+        setIsLoading(true);
         const result: Response = await fetch(url);
         const data: R = await result.json();
         setResponse(data);

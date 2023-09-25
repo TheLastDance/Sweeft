@@ -1,6 +1,5 @@
 export interface ICountryProps {
-  country: string;
-  handleCountry: (name: string) => void;
+  country: string | undefined;
 }
 
 export interface ICountryName {
@@ -49,4 +48,8 @@ export interface ICountryData extends ICountryName {
   };
   population: number;
   area: number;
+}
+
+export interface ILoadingOverlayProps {
+  isVisible: boolean;
 }

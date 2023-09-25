@@ -1,10 +1,17 @@
 import './Info.css';
+import { useContext } from 'react';
 import { ICountryProps, ICountryData } from '../../../types/types';
 import { useRequest } from '../../../customHooks/useRequest';
+import { LoadingOverlay } from '../../LoadingOverlay/LoadingOverlay';
+import { CountryContext } from '../../../context/CountryListProvider';
 
 const Info: React.FC<Pick<ICountryProps, "country">> = ({ country }) => {
   const url = `https://restcountries.com/v3.1/name/${country}?fields=name,flags,borders,cca3,capital,region,currencies,languages,subregion,demonyms,population,tld,area&fullText=true`;
-  const { response } = useRequest<ICountryData[]>([country], url, country);
+  const { response, isLoading } = useRequest<ICountryData[]>([country], url, country);
+  const { data } = useContext(CountryContext);
+
+  console.log(response, isLoading, data);
+
 
   return (
     <>
@@ -15,7 +22,7 @@ const Info: React.FC<Pick<ICountryProps, "country">> = ({ country }) => {
         </div>
         <div className="country_info_2">
           <ul className="country_info_2_left">
-            <li className="p-info">Native name: <span>{item.name.nativeName ? item.name.nativeName[Object.keys(item.name.nativeName)[0]].common : null}</span></li>
+            <li className="p-info">Native name: <span>{item.name.nativeName.common ? item.name.nativeName[Object.keys(item.name.nativeName)[0]].common : null}</span></li>
             <li className="p-info">Population: <span>{item.population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span></li>
             <li className="p-info">Region: <span>{item.region}</span></li>
             <li className="p-info">Sub Region: <span>{item.subregion}</span></li>
@@ -37,6 +44,7 @@ const Info: React.FC<Pick<ICountryProps, "country">> = ({ country }) => {
           </span>
         </div> : null}
       </div>)}
+      <LoadingOverlay isVisible={isLoading} />
     </>
   )
 }
