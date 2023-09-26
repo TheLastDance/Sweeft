@@ -2,6 +2,31 @@ export interface ICountryProps {
   country: string | undefined;
 }
 
+export interface ISearchProps {
+  country: string | undefined;
+  currencyCountry?: string | undefined;
+  handleCurrency?: (item: ICountryName) => void;
+}
+
+export interface IExchangeRate {
+  motd: {
+    msg: string;
+    url: string;
+  };
+  success: boolean;
+  base: string;
+  date: string;
+  rates: Record<string, number>;
+}
+
+export interface ICountryNavigate {
+  results: [
+    {
+      formatted_address: string,
+    }
+  ]
+}
+
 export interface ICountryName {
   name: {
     common: string;
@@ -12,16 +37,12 @@ export interface ICountryName {
         common: string;
       };
     };
-  },
+  };
   flags: {
     png: string;
     svg: string;
     alt: string;
-  }
-}
-
-export interface ICountryData extends ICountryName {
-  tld: string[];
+  };
   cca3: string;
   currencies: {
     [currencyCode: string]: {
@@ -29,6 +50,10 @@ export interface ICountryData extends ICountryName {
       symbol: string;
     };
   };
+}
+
+export interface ICountryData extends ICountryName {
+  tld: string[];
   capital: string[];
   region: string;
   subregion: string;

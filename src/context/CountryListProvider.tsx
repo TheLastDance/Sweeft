@@ -17,7 +17,7 @@ export const CountryContext = createContext<ICountryNameData>({
 });
 
 const CountryListProvider: React.FC<ICountryListProviderProps> = ({ children }) => {
-  const { response, isLoading } = useRequest<ICountryName[]>([], 'https://restcountries.com/v3.1/all?fields=name,flags');
+  const { response, isLoading } = useRequest<ICountryName[]>([], 'https://restcountries.com/v3.1/all?fields=name,flags,cca3,currencies');
 
   const value = {
     data: response,

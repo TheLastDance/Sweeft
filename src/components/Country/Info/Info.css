@@ -27,6 +27,7 @@
   list-style: none;
   margin-top: 10px;
   padding: 0 50px;
+  max-width: 40%;
 }
 
 .country_info_2 ul li,
@@ -44,6 +45,31 @@
   display: flex;
   justify-content: center;
   margin-top: 10px;
+}
+
+.border_countries a {
+  display: inline-flex;
+  justify-content: center;
+  min-width: 80px;
+  padding: 5px;
+  margin-right: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 4px 5px rgba(0, 0, 0, 0.07);
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.border_countries a:hover {
+  box-shadow: 0 0 4px 5px rgba(155, 176, 219, 0.07);
+  transition: ease-in 0.2s;
+}
+
+@media (max-width:800px) {
+  .country_info_2 ul {
+    max-width: unset;
+  }
 }
 
 @media (max-width:500px) {

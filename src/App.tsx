@@ -10,8 +10,8 @@ function App() {
     <main>
       <CountryListProvider>
         <Routes>
-          <Route path='/' element={<CountryNavigate />} ></Route>
-          <Route path=':country' element={<Country />} ></Route>
+          <Route path='/*' element={<CountryNavigate />} ></Route>
+          <Route path=':country/*' element={<Country />} ></Route>
         </Routes>
       </CountryListProvider>
     </main>
