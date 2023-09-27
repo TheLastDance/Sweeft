@@ -10,8 +10,6 @@ import { ICountryNavigate } from '../../types/types';
 
 const CountryNavigate: React.FC = () => {
   const { country } = useParams();
-  //const [address, setAddress] = useState("");
-  //const [isLoading, setIsLoading] = useState(false);
   const [geolocation, setGeolocation] = useState<[number, number] | []>([]);
   const { response, isLoading } = useRequest<ICountryNavigate, [] | [number, number]>(
     [geolocation],
@@ -25,17 +23,6 @@ const CountryNavigate: React.FC = () => {
       error => console.log("Error: ", error),
       { enableHighAccuracy: true });
   }, [])
-
-  // useEffect(() => {
-  //   if (geolocation.length) {
-  //     setIsLoading(true);
-  //     fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${geolocation[0]},${geolocation[1]}&language=en&result_type=country&key=AIzaSyA8rKgPjyEmViIFZdedrXWPBxRq351t71Y`)
-  //       .then(res => res.json())
-  //       .then(json => { setAddress(json.results[0].formatted_address); setIsLoading(false) });
-  //   }
-  // }, [geolocation])
-
-  // console.log(country);
 
   return (
     <div className='country'>

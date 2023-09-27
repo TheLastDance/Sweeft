@@ -8,6 +8,21 @@ export interface ISearchProps {
   handleCurrency?: (item: ICountryName) => void;
 }
 
+export type cashDataType = Record<string, ICountryData | IExchangeRate>;
+
+export interface IAirports {
+  icao: string;
+  iata: string;
+  name: string;
+  city: string;
+  region: string;
+  country: string;
+  elevation_ft: string;
+  latitude: string;
+  longitude: string;
+  timezone: string;
+}
+
 export interface IExchangeRate {
   motd: {
     msg: string;
@@ -17,6 +32,7 @@ export interface IExchangeRate {
   base: string;
   date: string;
   rates: Record<string, number>;
+  error?: string
 }
 
 export interface ICountryNavigate {
@@ -44,6 +60,7 @@ export interface ICountryName {
     alt: string;
   };
   cca3: string;
+  cca2: string;
   currencies: {
     [currencyCode: string]: {
       name: string;
@@ -63,10 +80,6 @@ export interface ICountryData extends ICountryName {
   borders: string[];
   demonyms: {
     eng: {
-      f: string;
-      m: string;
-    };
-    fra: {
       f: string;
       m: string;
     };

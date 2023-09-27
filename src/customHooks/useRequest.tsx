@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { CountryContext } from "../context/CountryListProvider";
+import { cashDataType } from "../types/types";
 
 interface UseRequest<R> {
   response: R | [];
@@ -8,27 +10,28 @@ interface UseRequest<R> {
 }
 
 type dependencyArrayType<T> = T[] | [];
+type ifCheckerType = string | number | boolean;
 
 // This custom hook handles most of requestes inside applications.
 // first arg is used to set dependencyArray of useEffect, second is url for fetch, third is checker inside try block to avoid unneccesary requests
-// fourth arg is optional and used only if we need to cash some information inside object
-export function useRequest<R, T>(dependencyArray: dependencyArrayType<T>, url: string, ifChecker: string | number | boolean = true, argCash?: string): UseRequest<R> {
+// fourth arg is optional and used only if we need to cash some information inside object, it gives us a key which will be used for specific data.
+export function useRequest<R, T>(dependencyArray: dependencyArrayType<T>, url: string, ifChecker: ifCheckerType = true, argCash?: string, headers?: RequestInit): UseRequest<R> {
+  const { cash, setCash } = useContext(CountryContext);
   const [response, setResponse] = useState<UseRequest<R>["response"]>([]);
   const [error, setError] = useState<UseRequest<R>["error"]>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [cashStore, setCashStore] = useState<Record<string, R>>({});
 
   const makeRequest = async () => {
-    if (argCash && cashStore[argCash]) {
-      setResponse(cashStore[argCash]);
+    if (argCash && cash[argCash]) {
+      setResponse(cash[argCash] as R);
     } else {
       try {
         if (ifChecker) {
           setIsLoading(true);
-          const result: Response = await fetch(url);
+          const result: Response = await fetch(url, headers);
           const data: R = await result.json();
           setResponse(data);
-          if (argCash) setCashStore(prev => ({ ...prev, [argCash]: data }));
+          if (argCash) setCash(prev => ({ ...prev, [argCash]: data }) as cashDataType);
         }
       } catch (err) {
         console.log(`Request failed: ${err}`);

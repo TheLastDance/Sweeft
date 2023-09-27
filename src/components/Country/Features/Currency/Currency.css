@@ -1,3 +1,54 @@
+.currency {
+  box-shadow: var(--shadow);
+  border-radius: 5px;
+}
+
 .currency h1 {
   margin-bottom: 15px;
+  padding: 20px;
+}
+
+.currency_inputs {
+  display: flex;
+  width: 100%;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.equality_sign {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.equality_sign span {
+  font-size: var(--h1);
+  font-weight: 500;
+}
+
+.currency_inputs label {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.currency_inputs label span {
+  font-size: calc(var(--minFS) * var(--scaleFactor));
+}
+
+.currency_inputs label input {
+  color: var(--mainFC);
+  border: 1px solid transparent;
+  border-bottom: 1px solid var(--hoverColor);
+  background: none;
+  display: block;
+  width: 100%;
+}
+
+.currency_inputs label:nth-child(3) input {
+  border-bottom: 1px dotted var(--hoverColor);
+}
+
+.currency_inputs label input:focus {
+  border-bottom: 1px solid var(--mainFC);
+  outline: none;
 }
