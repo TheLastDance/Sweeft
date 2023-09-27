@@ -1,27 +1,26 @@
-# React + TypeScript + Vite
+# Sweeft Making Science React Technical Task
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project was developed during the selection part of acceleration programm at Sweeft Digital company. This is the project where you can find the most relevant data information of countries around world, check and filter their airport lists and convert each countries currency to another.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Typescript
+- React
+- React Router DOM
+- CSS
+- Vite
 
-## Expanding the ESLint configuration
+### Main functionality
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Implemented very flexible custom hook for fetching data inside whole project
+- Implemented React-context for often used data and cashing feature around all components to avoid unneseccary requests
+- Added Error Boundaries to show information for user and not found page. Application will not crush if something went wrong.
+- Added React Router DOM for routing
+- Using `navigator.geolocation` to detect users position (latitude,longitude).
+- Using React Portals for loading screens
+- If user already viewed page, the information of page will be saved inside React-context `cashStore` state and will be deleted after refresh.
+- Was implemented debouncing effect for airport search input
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Run project
+1. Install dependencies - `npm install`
+2. Start the project - `npm run dev`
