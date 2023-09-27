@@ -44,7 +44,6 @@ export function useRequest<R, T>(dependencyArray: dependencyArrayType<T>, url: s
 
   useEffect(() => {
     makeRequest();
-    // eslint-disable-next-line
   }, dependencyArray);
 
   return {

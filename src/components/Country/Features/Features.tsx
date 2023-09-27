@@ -1,10 +1,12 @@
 import './Features.css';
-import { NavLink, useParams, Routes, Route } from 'react-router-dom';
+import { NavLink, useParams, Routes, Route, useLocation } from 'react-router-dom';
 import Currency from './Currency/Currency';
 import Airports from './Airports/Airports';
+import { ErrorBoundary } from 'react-error-boundary';
 
 const Features: React.FC = () => {
   const { country } = useParams();
+  const location = useLocation();
 
   function handleLink(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     if (!country) e.preventDefault();
@@ -31,7 +33,17 @@ const Features: React.FC = () => {
         </NavLink>
       </div>
       <Routes>
-        {country && <Route path='/' element={<Currency />} ></Route>}
+        {country &&
+          <Route
+            path='/'
+            element={
+              <ErrorBoundary
+                fallback={<p>One of the selected countries doesn't have a currency, please select another country.</p>}
+                resetKeys={[location]}
+              >
+                <Currency />
+              </ErrorBoundary>}>
+          </Route>}
         <Route path='/airports' element={<Airports />}></Route>
       </Routes>
     </div>

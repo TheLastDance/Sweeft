@@ -4,13 +4,10 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
   --scaleFactor: 1.5;
   --minFS: calc(11px * var(--scaleFactor));
   --h1: calc(var(--h2) * var(--scaleFactor));
   --h2: calc(var(--minFS) * var(--scaleFactor));
-  --headerFS: calc(var(--h1) * var(--scaleFactor));
-  --headerFC: linear-gradient(90deg, rgba(5, 80, 113) 20%, rgb(241, 218, 9) 100%);
   --backgroundC: linear-gradient(90deg, rgb(35, 39, 70) 20%, rgb(31, 30, 23) 100%);
   --mainFC: #dbd2d2;
   --hoverColor: rgb(61, 59, 59);

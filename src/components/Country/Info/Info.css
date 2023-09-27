@@ -34,6 +34,11 @@
 .border_countries span {
   padding: 5px 0;
   font-weight: 700;
+  font-size: calc(var(--minFS) * 1.1);
+}
+
+.country_info_2 ul li span {
+  font-size: var(--minFS);
 }
 
 .country_info_2 ul li span,

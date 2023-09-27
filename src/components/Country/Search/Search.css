@@ -42,7 +42,8 @@
   border: 1px solid var(--mainFC);
 }
 
-.drop-menu li a {
+.drop-menu li a,
+.second_country_p {
   padding: 10px;
   font-size: 1rem;
   font-weight: 600;
@@ -52,7 +53,8 @@
   text-decoration: none;
 }
 
-.drop-menu li a:hover {
+.drop-menu li a:hover,
+.second_country_p:hover {
   border-bottom: 1px solid var(--mainFC);
 }
 

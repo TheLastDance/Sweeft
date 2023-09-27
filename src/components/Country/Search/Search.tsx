@@ -28,7 +28,7 @@ const Search: React.FC<ISearchProps> = (props) => {
                 <p>{item.name.common}</p>
                 <img src={item.flags.svg} alt={item.flags.alt} />
               </Link> :
-                <p onClick={() => { if (handleCurrency) { handleCurrency(item) } }} >{item.name.common}</p>
+                <p className='second_country_p' onClick={() => { if (handleCurrency) { handleCurrency(item) } }} >{item.name.common}</p>
               }
             </li>)}
         </ul> : null}

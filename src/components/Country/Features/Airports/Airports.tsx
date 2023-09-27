@@ -30,7 +30,6 @@ const Airports = () => {
 
   useEffect(() => {
     setCca2(updateCode(country));
-    // eslint-disable-next-line
   }, [data, country])
 
   //debouncing
