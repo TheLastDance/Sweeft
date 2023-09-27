@@ -3,6 +3,7 @@ import Search from './Search/Search';
 import Info from './Info/Info';
 import Features from './Features/Features';
 import { useParams } from 'react-router-dom';
+import { ErrorBoundary } from 'react-error-boundary';
 
 
 const Country: React.FC = () => {
@@ -10,9 +11,11 @@ const Country: React.FC = () => {
 
   return (
     <div className='country'>
-      <Search country={country} />
-      <Info country={country} />
-      <Features />
+      <ErrorBoundary fallback={<p>Country provided in url does not exist, please check url address!</p>}>
+        <Search country={country} />
+        <Info country={country} />
+        <Features />
+      </ErrorBoundary>
     </div>
   )
 }
