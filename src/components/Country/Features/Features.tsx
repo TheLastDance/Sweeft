@@ -1,6 +1,6 @@
 import './Features.css';
 import { NavLink, useParams, Routes, Route } from 'react-router-dom';
-//import Currency from './Currency/Currency';
+import Currency from './Currency/Currency';
 import Airports from './Airports/Airports';
 
 const Features: React.FC = () => {
@@ -31,7 +31,7 @@ const Features: React.FC = () => {
         </NavLink>
       </div>
       <Routes>
-        {/* {country && <Route path='/' element={<Currency />} ></Route>} */}
+        {country && <Route path='/' element={<Currency />} ></Route>}
         <Route path='/airports' element={<Airports />}></Route>
       </Routes>
     </div>

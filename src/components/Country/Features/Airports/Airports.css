@@ -3,7 +3,8 @@
   border-radius: 5px;
 }
 
-.airports h1 {
+.airports h1,
+.airports_list {
   padding: 20px;
 }
 
@@ -31,4 +32,11 @@
 .airports_input label input:focus {
   border-bottom: 1px solid var(--mainFC);
   outline: none;
+}
+
+.airports_list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
 }

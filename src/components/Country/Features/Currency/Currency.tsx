@@ -41,7 +41,7 @@ const Currency: React.FC = () => {
     }
   }, [firstCountryCurrencyAmount, currencyCountry, response])
 
-  console.log(currencyCountry, currency, response);
+  //console.log(currencyCountry, currency, response);
 
   return (
     <div className='currency'>

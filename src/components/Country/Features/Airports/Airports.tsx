@@ -30,6 +30,7 @@ const Airports = () => {
 
   useEffect(() => {
     setCca2(updateCode(country));
+    // eslint-disable-next-line
   }, [data, country])
 
   //debouncing
@@ -39,7 +40,7 @@ const Airports = () => {
     }, 500);
 
     return () => clearTimeout(timerId);
-  }, [airportName, 500])
+  }, [airportName])
 
   return (
     <div className='airports'>
@@ -50,9 +51,9 @@ const Airports = () => {
         </label>
       </div>
       <ul className='airports_list'>
-        {response ? response.filter(item => item.iata).map((item, index) => <li key={index} >
+        {response.length ? response.filter(item => item.iata).map((item, index) => <li key={index} >
           {`${item.iata} - ${item.name} (${item.city})`}
-        </li>) : null}
+        </li>) : <p>No airports found!</p>}
       </ul>
       <LoadingOverlay isVisible={isLoading} />
     </div>
