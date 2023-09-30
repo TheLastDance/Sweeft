@@ -14,7 +14,9 @@ const Currency: React.FC = () => {
   const [currency, setCurrency] = useState('');
   const [firstCountryCurrencyAmount, setfirstCountryCurrencyAmount] = useState(0);
   const [secondCountryCurrencyAmount, setSecondCountryCurrencyAmount] = useState(0);
-  const { response, isLoading } = useRequest<IExchangeRate, string>([currency], `https://api.exchangerate.host/latest?base=${currency}`, currency, currency);
+  const { response, isLoading } = useRequest<IExchangeRate, string>([currency], `https://v6.exchangerate-api.com/v6/edae0ac24bb9dd554423e495/latest/${currency}`, currency, currency);
+  // https://api.exchangerate.host/latest?base=${currency}
+  //`https://api.exchangerate.host/live?access_key=8888e37dc9452010d2f18e3490b6f6ae&source=${currency}`
 
   function handleCurrency(item: ICountryName) {
     setCurrencyCountry(item.name.common)
@@ -38,6 +40,7 @@ const Currency: React.FC = () => {
   useEffect(() => {
     if (!Array.isArray(response)) {
       setSecondCountryCurrencyAmount(firstCountryCurrencyAmount * response.rates[updateCurrencyCode(currencyCountry)])
+      //setSecondCountryCurrencyAmount(firstCountryCurrencyAmount * response.quotes[updateCurrencyCode(country)+updateCurrencyCode(currencyCountry)])
     }
   }, [firstCountryCurrencyAmount, currencyCountry, response])
 
