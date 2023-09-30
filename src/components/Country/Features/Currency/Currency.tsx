@@ -39,10 +39,13 @@ const Currency: React.FC = () => {
 
   useEffect(() => {
     if (!Array.isArray(response)) {
-      setSecondCountryCurrencyAmount(firstCountryCurrencyAmount * response.rates[updateCurrencyCode(currencyCountry)])
+      setSecondCountryCurrencyAmount(firstCountryCurrencyAmount * response.conversion_rates[updateCurrencyCode(currencyCountry)])
       //setSecondCountryCurrencyAmount(firstCountryCurrencyAmount * response.quotes[updateCurrencyCode(country)+updateCurrencyCode(currencyCountry)])
     }
   }, [firstCountryCurrencyAmount, currencyCountry, response])
+
+  console.log(response);
+
 
   return (
     <div className='currency'>

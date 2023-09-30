@@ -31,7 +31,7 @@ export interface IExchangeRate {
   success: boolean;
   base: string;
   date: string;
-  rates: Record<string, number>;
+  conversion_rates: Record<string, number>;
   error?: string
 }
 
